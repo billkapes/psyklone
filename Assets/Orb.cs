@@ -21,7 +21,7 @@ public class Orb : MonoBehaviour
                 randomXs[Random.Range(0, randomYs.Length)],
                 0f
             ),
-                Quaternion.identity
+            Quaternion.identity
         );
 
         GetComponent<Rigidbody>().velocity = (Vector3.zero - transform.position).normalized * speedScale++;

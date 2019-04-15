@@ -10,13 +10,13 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(orbPrefab);
+        //Instantiate(orbPrefab);
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
+        //timer -= Time.deltaTime;
         if (timer < 0f)
         {
             Instantiate(orbPrefab);

@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     State myState;
     public float shootPower, torpuePower, timerValue;
     public float timer, aiTimer, horizLimit, vertLimit;
+    public bool canMove;
     
 
     // Start is called before the first frame update
@@ -24,6 +25,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         //aiTimer -= Time.deltaTime;
 
         if (Input.GetKey(KeyCode.Space) || aiTimer < 0f)
@@ -33,7 +39,11 @@ public class PlayerMovement : MonoBehaviour
             if (myState == State.SPINING)
             {
                 myState = State.SHOOT;
-                GetComponentInChildren<ParticleSystem>().Play();
+                var main = GetComponentInChildren<ParticleSystem>().main;
+                main.startSpeed = 9f;
+                //GetComponentInChildren<ParticleSystem>().Play();
+
+
             }
         }    
     }
@@ -47,11 +57,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Mathf.Abs(transform.position.x) > horizLimit)
         {
-            transform.position = new Vector3(-transform.position.x, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-transform.position.x - 0.2f, transform.position.y, transform.position.z);
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, -transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, -transform.position.y - 0.2f, transform.position.z);
 
         }
     }
@@ -71,6 +81,11 @@ public class PlayerMovement : MonoBehaviour
                 if (timer < 0f)
                 {
                     myState = State.SPINING;
+                    GetComponent<Animator>().SetTrigger("Spin");
+                    var main = GetComponentInChildren<ParticleSystem>().main;
+                    main.startSpeed = 2f;
+                    //GetComponentInChildren<ParticleSystem>().Play();
+
                     timer = timerValue;
                 }
                 break;
@@ -78,7 +93,9 @@ public class PlayerMovement : MonoBehaviour
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
                 GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
                 GetComponent<Rigidbody>().AddForce(transform.up * shootPower);
+                GetComponent<Animator>().SetTrigger("Shoot");
                 myState = State.SHOOTING;
+                
                 break;
             default:
                 break;
