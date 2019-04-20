@@ -182,7 +182,7 @@ Transform:
   - {fileID: 895911548}
   - {fileID: 144033880}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &22906745
 LineRenderer:
@@ -705,7 +705,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c4dbd90b811ac449a025621e0158ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canSpawn: 0
   orbPrefab: {fileID: 4911429149521516547, guid: 66c5b625b8dc628438651cc642435ad8,
+    type: 3}
+  wallPrefab: {fileID: 2132490082001446364, guid: 0f2d7ae8faead68438fd1fc45035401f,
+    type: 3}
+  warningPrefab: {fileID: 1049502379817061047, guid: ff5a537087e07ec469aaee1ba659149a,
     type: 3}
 --- !u!4 &607716952
 Transform:
@@ -719,7 +724,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &895911547
 GameObject:
@@ -5626,7 +5631,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2051364269
 GameObject:
@@ -5695,7 +5700,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 16.751001, y: -43.515003, z: -17.363}
 --- !u!1 &2144667937
 GameObject:

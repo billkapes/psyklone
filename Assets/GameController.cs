@@ -9,17 +9,19 @@ public class GameController : MonoBehaviour
 {
     Camera mainCam;
     PlayerMovement thePlayer;
+    Spawner theSpawner;
     public Button startButton;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        theSpawner = GameObject.FindObjectOfType<Spawner>();
         thePlayer = GameObject.FindObjectOfType<PlayerMovement>();
         mainCam = GameObject.FindObjectOfType<Camera>();
         mainCam.fieldOfView = 12f;
         //mainCam.transform.SetParent(thePlayer.transform);
         thePlayer.torpuePower = 2f;
+
     }
 
     // Update is called once per frame
@@ -28,6 +30,7 @@ public class GameController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             thePlayer.canMove = false;
+            theSpawner.canSpawn = false;
             mainCam.DOFieldOfView(12, 1);
 
             thePlayer.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
@@ -38,6 +41,7 @@ public class GameController : MonoBehaviour
     }
 
     public void StartButtonPress() {
+        theSpawner.canSpawn = true;
         thePlayer.canMove = true;
         thePlayer.torpuePower = 10f;
         //mainCam.transform.SetParent(null);

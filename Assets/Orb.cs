@@ -12,13 +12,13 @@ public class Orb : MonoBehaviour
     void Start()
     {
         timer = 3f;
-        int[] randomXs = new int[] { -4, 4 };
-        int[] randomYs = new int[] { -4, 4 };
+        int[] randomXs = new int[] { -3, 3 };
+        int[] randomYs = new int[] { 6, 6 };
 
         transform.SetPositionAndRotation(
             new Vector3(
                 randomXs[Random.Range(0, randomXs.Length)],
-                randomXs[Random.Range(0, randomYs.Length)],
+                randomYs[Random.Range(0, randomYs.Length)],
                 0f
             ),
             Quaternion.identity
